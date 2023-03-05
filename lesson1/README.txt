@@ -8,4 +8,6 @@ https://remix.ethereum.org/
 
 create new branch and push changes
 
+for reading: https://docs.soliditylang.org/en/v0.8.19/types.html
+
 
