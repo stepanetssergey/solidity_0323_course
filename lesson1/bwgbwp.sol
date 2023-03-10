@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // WTF Solidity by 0xAA
-
+// question about it
 pragma solidity ^0.8.4;
 
 interface IERC20 {
