@@ -20,7 +20,7 @@ describe("Greeter", function () {
     await symbolTrx.wait();
 
     expect(await greeter.greet()).to.equal("Hola, mundo!!!!!!");
-    expect(await greeter.name()).to.equal("Perfect2 Token")
+    expect(await greeter.name()).to.equal("Perfect Token")
     expect(await greeter.symbol()).to.equal('MPT')
   });
 });
