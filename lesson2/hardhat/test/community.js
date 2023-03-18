@@ -3,6 +3,13 @@ const { ethers } = require("hardhat");
 
 describe("Sign up to community", () => {
   it("When user calls signUp we need to write it to active Users", async () => {
+     // 1. take 6 accounts
+     // 2. transfer usdt to this accounts
+     // 3. create Match     
+     // 2 user win 1 (100$) 3 user win(2) 50 + 50 (win) = 100 
+     // 5. for every account make approve and makeBet (2 like 1 (part1), 3 like 2 (part2))
+     // validate this match (part 2 has to win)
+     // check how many money they will get (correct or not)
 
   });
 }
