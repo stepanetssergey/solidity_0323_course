@@ -23,8 +23,8 @@ describe("ERC20", () => {
     await token.deployed();
     const [owner, account1] = await ethers.getSigners();
     const transTX = await token.tranfer(account1.address, 100000000);
-    const transTX.wait();
-    expect (await token.balanceOf(account1.address).to.equal(100000000);
+    await transTX.wait();
+    expect (await token.balanceOf(account1.address)).to.equal(100000000);
     
 
 

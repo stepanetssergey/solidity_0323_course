@@ -42,8 +42,8 @@ contract Community {
     //      matchId         userAddress  amount
     mapping(uint => mapping(address => Bet)) public UsersBetsByMatchId;
     mapping(address => bool) public Validators;
-    mapping(uint => Match) internal Matches;
-    mapping(address => User) internal Users;
+    mapping(uint => Match) public Matches;
+    mapping(address => User) public Users;
 
     constructor(address _usdt) {
         usdtAddress = _usdt;
@@ -75,7 +75,7 @@ contract Community {
 
     function signIn() public {
          Users[msg.sender].signed = true;
-        Users[msg.sender].active = true;
+         Users[msg.sender].active = true;
     }
 
 
