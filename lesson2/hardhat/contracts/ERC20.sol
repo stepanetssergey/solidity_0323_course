@@ -54,6 +54,7 @@ contract ERC20 {
     require(allowens[_from][_to] >= _amount,'not enough amount');
     balances[_from] = balances[_from] - _amount;
     balances[_to] += _amount;
+    allowens[_from][_to] -= _amount;
   }
 
   function mint(address _to, uint _amount) public {

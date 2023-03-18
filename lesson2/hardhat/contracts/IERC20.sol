@@ -12,7 +12,7 @@ interface IERC20 {
 
   function blanceOf(address _address) external view returns(uint);
 
-  function tranfer (address _to, uint _amount) external returns (bool);
+  function transfer (address _to, uint _amount) external returns (bool);
   
   function approve(address _sender, uint _amount) external;
 

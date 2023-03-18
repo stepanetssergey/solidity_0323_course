@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import './IERC20.sol';
 
+// import "hardhat/console.sol";
+
 
 contract Community {
  
@@ -81,7 +83,7 @@ contract Community {
 
     // bet if 1 part1 will win and 2 part2 wil win
     function makeBet(uint _match_id, uint _amount, uint _bet) public {
-        require(Matches[_match_id].startDate > block.timestamp, 'Only befor event');
+        //require(Matches[_match_id].startDate > block.timestamp, 'Only befor event');
         require(_amount >= Matches[_match_id].minBet, 'minimal ber');
         IERC20 _usdt = IERC20(usdtAddress);
         _usdt.transferFrom(msg.sender, address(this), _amount);
@@ -97,9 +99,11 @@ contract Community {
         
     }
 
-    function Validate(uint _match_id) public {
+    function Validate(uint _match_id, uint _part1, uint _part2) public {
         require(Validators[msg.sender] == true,'only validator can call');
         Matches[_match_id].resultApprove += 1;
+        Matches[_match_id].scorePart1 = _part1;
+        Matches[_match_id].scorePart2 = _part2;
     }
 
 
@@ -114,9 +118,9 @@ contract Community {
         uint _amount_lost;
         uint _amount_win;
         if (Matches[_match_id].scorePart1 > Matches[_match_id].scorePart2) {
-         _current_bet == 1;
+         _current_bet = 1;
         } else {
-            _current_bet == 2;
+            _current_bet = 2;
         }
         if (UsersBetsByMatchId[_match_id][msg.sender].bet != _current_bet) {
             return false;
@@ -129,8 +133,9 @@ contract Community {
             _amount_win = Matches[_match_id].totalBetAmountPart2;
         }
         uint _bet = UsersBetsByMatchId[_match_id][msg.sender].amount;
+      
         uint _resultUSDT = calculateBetResult(_amount_lost, _amount_win, _bet);
-        IERC20(usdtAddress).tranfer(msg.sender, _resultUSDT);
+        IERC20(usdtAddress).transfer(msg.sender, _resultUSDT + _bet);
         return true;
     }
 

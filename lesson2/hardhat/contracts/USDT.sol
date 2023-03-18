@@ -35,11 +35,11 @@ contract USDT {
     return _totalSupply;
   }
   
-  function blanceOf(address _address) public view returns(uint){
+  function balanceOf(address _address) public view returns(uint){
     return balances[_address];
   }
   
-  function tranfer (address _to, uint _amount) public returns (bool){
+  function transfer(address _to, uint _amount) public returns (bool){
     balances[msg.sender]=balances[msg.sender] - _amount;
     balances[_to] = balances[_to] + _amount;
     return true;
